@@ -1,0 +1,5 @@
+*.asv   # Windows autosave
+*.m~    # OSX / UNIX autosave
+*.mex*  # Compiled MEX library
+slprj/  # Simulink code generation
+*.DS_Store  # OSX files
