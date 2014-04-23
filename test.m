@@ -1,4 +1,5 @@
 import mesh.*
+import formulation.*
 
 % Create mesh
 x = Mesh(2,1);
