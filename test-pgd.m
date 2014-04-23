@@ -34,3 +34,15 @@ u0{3} = ones(k.nbNodes(),1);
 % Resolution
 u = pgdSolver(a,b,u0,10,4);
 
+% Postprocessing
+pgdplot({x,t,k},u,'Xlabel',{'x','t','k'},'Ylabel','sol','Title','plot');
+
+figure;
+    subplot(2,1,1);
+        plot(cell2mat(cellfun(@(node) node.coor,t.nodes,'UniformOutput',false)),u{2});
+        xlabel('t');
+        ylabel('\lambda');
+    subplot(2,1,2);
+        plot(cell2mat(cellfun(@(node) node.coor,k.nodes,'UniformOutput',false)),u{3});
+        xlabel('k');
+        ylabel('\gamma');
