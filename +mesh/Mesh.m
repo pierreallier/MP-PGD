@@ -100,5 +100,18 @@ classdef Mesh < handle
                 error('Mesh.getElem:BadInput','Overfull index');
             end
         end
+        
+        function submesh = extract(this, handle)
+            %extract Extract a submesh 
+            submesh = mesh.Mesh(this.mesh_dim,this.field_dim);
+            cellfun(@(node) submesh.addNode(node.coor),this.nodes,'UniformOutput',false);
+            
+            for i=1:length(this.elems)
+                test = cellfun(@(node) handle(node.coor),this.elems{i}.nodes);
+                if test
+                    submesh.addElem(this.elems{i});
+                end
+            end
+        end
     end
 end
