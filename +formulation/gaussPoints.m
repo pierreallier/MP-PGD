@@ -5,6 +5,9 @@ function [xg,wg] = gaussPoints(elem)
     elseif isa(elem, 'mesh.Triangle3')
         wg = [1/6 1/6 1/6];
         xg = 1/6*[1 1;4 1;1 4];
+    elseif isa(elem, 'mesh.Quadrangle4')
+        wg = [1 1 1 1];
+        xg = sqrt(3/9)*[-1 -1;-1 1;1 -1;1 1];
     else
         warning('gaussPoint:BadInput','Unknown Element - skipped');
     end
